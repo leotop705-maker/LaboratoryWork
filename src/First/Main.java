@@ -1,5 +1,5 @@
 package First;
-
+//Используя список, удалить их текста заданный набор букв.
 import java.util.Scanner;
 
 public class Main {

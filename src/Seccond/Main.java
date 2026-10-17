@@ -1,5 +1,6 @@
 package Seccond;
-
+//Дана разреженная матрицa(CCS).
+//Зеркальное отображение относительно диагонали, проходящей с левого нижнего угла к правому верхнему углу.
 import First.CharLinkedList;
 import java.util.Scanner;
 
