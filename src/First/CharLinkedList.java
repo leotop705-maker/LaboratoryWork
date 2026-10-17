@@ -21,7 +21,7 @@ public class CharLinkedList {
     public boolean contains(char value) {
         boolean exist = false;
         Node current = head;
-        while (current.next != null)
+        while (current != null)
             if (value == current.data){
                 exist = true;
                 return exist;
@@ -33,16 +33,27 @@ public class CharLinkedList {
 
     // Удаление из текущего списка всех символов, находящихся в другом списке toRemove
     public void removeAll(CharLinkedList toRemove) {
+
+
+        if (head == null || toRemove == null || toRemove.head == null){
+            return;
+        }
+
+        while (head != null && toRemove.contains(head.data)){
+            head = head.next;
+        }
+
+        if (head == null){
+            return;
+        }
+
         Node current = head;
-        Node prev = head;
-        Node currentRemote = toRemove.head;
+
         while (current.next != null){
-            while (contains(toRemove.head.data)){
-                if (current == currentRemote){
-                    current = current.next;
-                    prev.next = current;
-                }
-                currentRemote = currentRemote.next;
+            if (toRemove.contains(current.next.data)){
+                current.next = current.next.next;
+            } else {
+                current = current.next;
             }
         }
     }
@@ -58,21 +69,11 @@ public class CharLinkedList {
 
     // Статический метод для создания списка из строки
     public static CharLinkedList fromString(String text) {
-        Node current = head;
+        CharLinkedList list = new CharLinkedList();
         for (int i = 0; i < text.length(); i++){
-            //pushBack(text.charAt(i));
-            Node newNode = new Node(text.charAt(i));
-            if (head == null) {
-                head = newNode;
-                return;
-            }
-            Node current = head;
-            while (current.next != null) {
-                current = current.next;
-            }
-            current.next = newNode;
+            list.pushBack(text.charAt(i));
         }
-        return null;
+        return list;
     }
 
 
