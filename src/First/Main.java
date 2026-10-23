@@ -33,5 +33,6 @@ public class Main {
         System.out.print("Result text: ");
         textList.print();
     }
+
 }
 
